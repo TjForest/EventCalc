@@ -1,5 +1,4 @@
 #pragma once
-
 #include "wx/wx.h"
 #include "Main.h";
 
@@ -10,7 +9,7 @@ public:
 	~Calc();
 
 private:
-	Main* Frame = nullptr;
+	Main* m_frame1 = nullptr;
 
 public:
 	virtual bool OnInit();

@@ -1,4 +1,6 @@
 #include "Main.h"
+#include "ButtonFactory.h"
+#include "Calc.h"
 
 wxBEGIN_EVENT_TABLE(Main, wxFrame)
 EVT_BUTTON(0, OnButtonClicked)
@@ -6,45 +8,40 @@ wxEND_EVENT_TABLE()
 
 Main::Main() : wxFrame(nullptr, wxID_ANY, "CalQmalator", wxPoint(30, 30), wxSize(456, 840))
 {
+	ButtonFactory Fact = ButtonFactory(this);
+
 	wxFont font(36, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false);
 
 	//text box
 	txt = new wxTextCtrl(this, 50, "", wxPoint(0, 0), wxSize(440, 100)); txt->SetFont(font);
 
-	//0-9
-	btn = new wxButton(this, 0, "0", wxPoint(110, 600), wxSize(220, 100)); btn->SetFont(font);
-	btn = new wxButton(this, 1, "1", wxPoint(0, 500),   wxSize(110, 100)); btn->SetFont(font);
-	btn = new wxButton(this, 2, "2", wxPoint(110, 500), wxSize(110, 100)); btn->SetFont(font);
-	btn = new wxButton(this, 3, "3", wxPoint(220, 500), wxSize(110, 100)); btn->SetFont(font);
-	btn = new wxButton(this, 4, "4", wxPoint(0, 400),   wxSize(110, 100)); btn->SetFont(font);
-	btn = new wxButton(this, 5, "5", wxPoint(110, 400), wxSize(110, 100)); btn->SetFont(font);
-	btn = new wxButton(this, 6, "6", wxPoint(220, 400), wxSize(110, 100)); btn->SetFont(font);
-	btn = new wxButton(this, 7, "7", wxPoint(0, 300),   wxSize(110, 100)); btn->SetFont(font);
-	btn = new wxButton(this, 8, "8", wxPoint(110, 300), wxSize(110, 100)); btn->SetFont(font);
-	btn = new wxButton(this, 9, "9", wxPoint(220, 300), wxSize(110, 100)); btn->SetFont(font);
-
-	//operators
-	btn = new wxButton(this, 10, "=", wxPoint(0, 700),   wxSize(440, 100)); btn->SetFont(font);
-	btn = new wxButton(this, 11, "+", wxPoint(330, 600), wxSize(110, 100)); btn->SetFont(font);
-	btn = new wxButton(this, 12, "-", wxPoint(330, 500), wxSize(110, 100)); btn->SetFont(font);
-	btn = new wxButton(this, 13, "*", wxPoint(330, 400), wxSize(110, 100)); btn->SetFont(font);
-	btn = new wxButton(this, 14, "/", wxPoint(330, 300), wxSize(110, 100)); btn->SetFont(font);
-	btn = new wxButton(this, 15, "%", wxPoint(330, 200), wxSize(110, 100)); btn->SetFont(font);
-	
-	//speical
-	btn = new wxButton(this, 16, "CLEAR", wxPoint(0, 100),   wxSize(440, 100)); btn->SetFont(font);
-	btn = new wxButton(this, 17,   "-/+", wxPoint(0, 600),   wxSize(110, 100)); btn->SetFont(font);
-
-	//conversions
-	btn = new wxButton(this, 18, "BIN", wxPoint(0, 200),   wxSize(110, 100)); btn->SetFont(font);
-	btn = new wxButton(this, 19, "HEX", wxPoint(110, 200), wxSize(110, 100)); btn->SetFont(font);
-	btn = new wxButton(this, 20, "DEC", wxPoint(220, 200), wxSize(110, 100)); btn->SetFont(font);
+	Fact.btn0();
+	Fact.btn1();
+	Fact.btn2();
+	Fact.btn3();
+	Fact.btn4();
+	Fact.btn5();
+	Fact.btn6();
+	Fact.btn7();
+	Fact.btn8();
+	Fact.btn9();
+	Fact.btn10();
+	Fact.btn11();
+	Fact.btn12();
+	Fact.btn13();
+	Fact.btn14();
+	Fact.btn15();
+	Fact.btn16();
+	Fact.btn17(); 
+	Fact.btn18();
+	Fact.btn19();
+	Fact.btn20();
 
 	Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
 }
 Main::~Main()
 {
-	delete[]btn;
+	//delete[]btn;
 }
 
 void Main::OnButtonClicked(wxCommandEvent& evt)
