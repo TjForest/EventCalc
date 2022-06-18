@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClInclude Include="ButtonFactory.h" />
     <ClInclude Include="Calc.h" />
+    <ClInclude Include="CalcProcessor.h" />
     <ClInclude Include="Main.h" />
   </ItemGroup>
   <ItemGroup>

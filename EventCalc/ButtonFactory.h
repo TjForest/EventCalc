@@ -7,6 +7,8 @@ class ButtonFactory
 public:
 	wxButton* btn = nullptr;
 	Main* m_frame1 = nullptr;
+
+
 	ButtonFactory(Main* m_frame1);
 	~ButtonFactory();
 	wxButton* btn0();

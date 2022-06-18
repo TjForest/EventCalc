@@ -7,6 +7,12 @@ public:
 	Main();
 	~Main();
 
+	int num1, num2;
+	wxString _num1 = "";
+	wxString _num2 = "";
+	bool symbol = false;
+	wxString sym = "";
+
 public:
 	wxButton *btn;
 	wxTextCtrl *txt = nullptr;

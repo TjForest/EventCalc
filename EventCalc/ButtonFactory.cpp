@@ -1,5 +1,5 @@
 #include "ButtonFactory.h"
-#
+
 ButtonFactory::ButtonFactory(Main* frame1) {
 	m_frame1 = frame1;
 }
