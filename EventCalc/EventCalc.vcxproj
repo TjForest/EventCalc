@@ -143,12 +143,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AddCommand.h" />
     <ClInclude Include="ButtonFactory.h" />
     <ClInclude Include="Calc.h" />
     <ClInclude Include="CalcProcessor.h" />
+    <ClInclude Include="DivCommand.h" />
+    <ClInclude Include="ICommand.h" />
     <ClInclude Include="Main.h" />
+    <ClInclude Include="MultCommand.h" />
+    <ClInclude Include="SubCommand.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddCommand.cpp" />
     <ClCompile Include="ButtonFactory.cpp" />
     <ClCompile Include="Calc.cpp" />
     <ClCompile Include="Main.cpp" />

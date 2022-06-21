@@ -2,6 +2,13 @@
 #include "ButtonFactory.h"
 #include "Calc.h"
 #include "Calcprocessor.h"
+#include "ICommand.h"
+#include "AddCommand.h"
+#include "SubCommand.h"
+#include "MultCommand.h"
+#include "DivCommand.h"
+#include <vector>
+
 
 wxBEGIN_EVENT_TABLE(Main, wxFrame)
 EVT_BUTTON(0, OnButtonClicked)
@@ -9,7 +16,7 @@ wxEND_EVENT_TABLE()
 
 Main::Main() : wxFrame(nullptr, wxID_ANY, "CalQmalator", wxPoint(30, 30), wxSize(456, 840))
 {
-	
+
 	ButtonFactory Fact = ButtonFactory(this);
 
 	wxFont font(36, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false);
@@ -48,6 +55,7 @@ Main::~Main()
 
 void Main::OnButtonClicked(wxCommandEvent& evt)
 {
+	std::vector<ICommand*> cmds;
 	CalcProcessor* Proc = CalcProcessor::GetInstance();
 
 	int NumCalc = evt.GetId();
@@ -78,31 +86,76 @@ void Main::OnButtonClicked(wxCommandEvent& evt)
 		symbol = false;
 		if (sym == "+")
 		{
+		AddCommand* Adder = new AddCommand;
+
 			num1 = wxAtoi(_num1);
 			num2 = wxAtoi(_num2);
+
+			Adder->setNum1(num1);
+			Adder->setNum2(num2);
+
+			cmds.push_back(Adder);
+
 			txt->Clear();
-			txt->AppendText(Proc->GetAddition(num1, num2));
+
+			txt->AppendText(cmds[0]->Execute());
+			//txt->AppendText(Proc->GetAddition(num1, num2));
+			cmds.pop_back();
+			delete Adder;
 		}
 		else if (sym == "-")
 		{
+		SubCommand* Subber = new SubCommand;
 			num1 = wxAtoi(_num1);
 			num2 = wxAtoi(_num2);
+
+			Subber->setnum1(num1);
+			Subber->setnum2(num2);
+
+			cmds.push_back(Subber);
+
 			txt->Clear();
-			txt->AppendText(Proc->GetSubtraction(num1, num2));
+
+			txt->AppendText(cmds[0]->Execute());
+			//txt->AppendText(Proc->GetSubtraction(num1, num2));
+			cmds.pop_back();
+			delete Subber;
 		}
 		else if (sym == "/")
 		{
+		DivCommand* Diver = new DivCommand;
 			num1 = wxAtoi(_num1);
 			num2 = wxAtoi(_num2);
+
+			Diver->setnum1(num1);
+			Diver->setnum2(num2);
+
+			cmds.push_back(Diver);
+
 			txt->Clear();
-			txt->AppendText(Proc->GetDivide(num1, num2));
+
+			txt->AppendText(cmds[0]->Execute());
+			//txt->AppendText(Proc->GetDivide(num1, num2));
+			cmds.pop_back();
+			delete Diver;
 		}
 		else if (sym == "*")
 		{
+		MultCommand* Multer = new MultCommand;
 			num1 = wxAtoi(_num1);
 			num2 = wxAtoi(_num2);
+
+			Multer->setnum1(num1);
+			Multer->setnum2(num2);
+
+			cmds.push_back(Multer);
+
 			txt->Clear();
-			txt->AppendText(Proc->GetMultiply(num1, num2));
+
+			txt->AppendText(cmds[0]->Execute());
+			//txt->AppendText(Proc->GetMultiply(num1, num2));
+			cmds.pop_back();
+			delete Multer;
 		}
 		_num2.Clear();
 		_num1.Clear();
