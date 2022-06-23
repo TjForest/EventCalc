@@ -20,9 +20,9 @@ public:
 		_num2 = num2;
 	}
 
-	std::string DoAddition(int _num1, int _num2)
+	std::string DoAddition(int num1, int num2)
 	{
-		std::string add = std::to_string(_num1 + _num2);
+		std::string add = std::to_string(num1 + num2);
 
 		return add;
 	}

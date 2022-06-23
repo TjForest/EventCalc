@@ -23,7 +23,7 @@ public:
 	}
 	std::string DoMult(int num1, int num2)
 	{
-		std::string multi = std::to_string(_num1 * _num2);
+		std::string multi = std::to_string(num1 * num2);
 		return multi;
 	}
 }; 

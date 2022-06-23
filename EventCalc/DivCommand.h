@@ -24,7 +24,7 @@ public:
 	}
 	std::string DoDiv(int num1, int num2)
 	{
-		std::string div = std::to_string(_num1 / _num2);
+		std::string div = std::to_string(num1 / num2);
 		return div;
 	}
 }; 
