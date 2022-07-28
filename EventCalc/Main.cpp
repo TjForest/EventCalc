@@ -39,11 +39,14 @@ Main::Main() : wxFrame(nullptr, wxID_ANY, "CalQmalator", wxPoint(30, 30), wxSize
 	Fact.ButtonMaker(this, 13, "*", wxPoint(330, 400), wxSize(110, 100));
 	Fact.ButtonMaker(this, 14, "/", wxPoint(330, 300), wxSize(110, 100));
 	Fact.ButtonMaker(this, 15, "%", wxPoint(330, 200), wxSize(110, 100));
-	Fact.ButtonMaker(this, 16, "CLEAR", wxPoint(0, 100), wxSize(440, 100));
+	Fact.ButtonMaker(this, 16, "CLEAR", wxPoint(330, 100), wxSize(110, 100));
 	Fact.ButtonMaker(this, 17, "-/+", wxPoint(0, 600), wxSize(110, 100));
 	Fact.ButtonMaker(this, 18, "BIN", wxPoint(0, 200), wxSize(110, 100));
 	Fact.ButtonMaker(this, 19, "HEX", wxPoint(110, 200), wxSize(110, 100));
 	Fact.ButtonMaker(this, 20, "DEC", wxPoint(220, 200), wxSize(110, 100));
+	Fact.ButtonMaker(this, 21, "SIN", wxPoint(0, 100), wxSize(110, 100));
+	Fact.ButtonMaker(this, 22, "COS", wxPoint(110, 100), wxSize(110, 100));
+	Fact.ButtonMaker(this, 23, "TAN", wxPoint(220, 100), wxSize(110, 100));
 
 	Bind(wxEVT_COMMAND_BUTTON_CLICKED, &Main::OnButtonClicked, this);
 }
@@ -226,5 +229,25 @@ void Main::OnButtonClicked(wxCommandEvent& evt)
 		Proc->SetBaseNum(wxAtoi(txt->GetValue()));
 		txt->Clear();
 		txt->AppendText(Proc->GetDecimal());
+	}
+
+	// SIN COS TAN
+	if (NumCalc == 21)
+	{
+		Proc->SetBaseNum(wxAtoi(txt->GetValue()));
+		txt->Clear();
+		txt->AppendText(Proc->DoSin());
+	}
+	if (NumCalc == 22)
+	{
+		Proc->SetBaseNum(wxAtoi(txt->GetValue()));
+		txt->Clear();
+		txt->AppendText(Proc->DoCos());
+	}
+	if (NumCalc == 22)
+	{
+		Proc->SetBaseNum(wxAtoi(txt->GetValue()));
+		txt->Clear();
+		txt->AppendText(Proc->DoTan());
 	}
 }

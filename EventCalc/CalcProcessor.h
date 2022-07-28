@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <math.h>
 
 class CalcProcessor
 {
@@ -81,6 +82,25 @@ public:
 		}
 		NumsToAlpha = "0x" + NumsToAlpha;
 		return NumsToAlpha;
+	}
+
+	// SIN COS TAN
+	std::string DoSin()
+	{
+		//std::string result = "";
+		//int num = sin(baseNumber);
+		//result = std::to_string(num);
+		//return result;
+
+		return std::to_string(sin(baseNumber));
+	}
+	std::string DoCos()
+	{
+		return std::to_string(cos(baseNumber));
+	}
+	std::string DoTan()
+	{
+		return std::to_string(tan(baseNumber));
 	}
 };
 CalcProcessor* CalcProcessor::_processor = nullptr;
